@@ -1,0 +1,60 @@
+# =========================
+# ==== Atmel Studio =======
+# =========================
+
+# Carpetas de build
+Debug/
+Release/
+
+# Archivos generados por compilación
+*.elf
+*.hex
+*.eep
+*.map
+*.o
+*.d
+*.lss
+*.srec
+
+# Archivos de make
+makedep.mk
+Makefile
+
+# Archivos de usuario / configuración local
+*.atsuo
+*.user
+*.userprefs
+
+# Archivos internos de Atmel
+*.componentinfo.xml
+
+
+# =========================
+# ======= Proteus =========
+# =========================
+
+# Backups automáticos
+Project Backups/
+
+# Archivos temporales (por si aparecen)
+*.dbk
+*.tmp
+
+
+# =========================
+# ===== Sistema ===========
+# =========================
+
+# Windows
+Thumbs.db
+
+# Mac
+.DS_Store
+
+
+# =========================
+# ===== Opcional ==========
+# =========================
+
+# Logs
+*.log
