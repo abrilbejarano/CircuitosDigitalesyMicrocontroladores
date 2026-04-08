@@ -1,0 +1,344 @@
+
+Entregable1-Codigo.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000286  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000212  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800100  00800100  00000286  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000286  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002b8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000038  00000000  00000000  000002f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000078d  00000000  00000000  00000330  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000697  00000000  00000000  00000abd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000002f0  00000000  00000000  00001154  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000054  00000000  00000000  00001444  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000044c  00000000  00000000  00001498  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000000a7  00000000  00000000  000018e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000028  00000000  00000000  0000198b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a6 30       	cpi	r26, 0x06	; 6
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 a7 00 	call	0x14e	; 0x14e <main>
+  88:	0c 94 07 01 	jmp	0x20e	; 0x20e <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <_Z9delay_1msv>:
+		delay_1ms();
+    }
+}
+
+void delay_1ms() {
+	for (uint16_t i=0; i<TICKS_POR_MS; i++);
+  90:	80 e0       	ldi	r24, 0x00	; 0
+  92:	90 e0       	ldi	r25, 0x00	; 0
+  94:	80 3a       	cpi	r24, 0xA0	; 160
+  96:	2f e0       	ldi	r18, 0x0F	; 15
+  98:	92 07       	cpc	r25, r18
+  9a:	10 f4       	brcc	.+4      	; 0xa0 <_Z9delay_1msv+0x10>
+  9c:	01 96       	adiw	r24, 0x01	; 1
+  9e:	fa cf       	rjmp	.-12     	; 0x94 <_Z9delay_1msv+0x4>
+	
+	reloj++;
+  a0:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <reloj>
+  a4:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <reloj+0x1>
+  a8:	a0 91 04 01 	lds	r26, 0x0104	; 0x800104 <reloj+0x2>
+  ac:	b0 91 05 01 	lds	r27, 0x0105	; 0x800105 <reloj+0x3>
+  b0:	01 96       	adiw	r24, 0x01	; 1
+  b2:	a1 1d       	adc	r26, r1
+  b4:	b1 1d       	adc	r27, r1
+  b6:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <reloj>
+  ba:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <reloj+0x1>
+  be:	a0 93 04 01 	sts	0x0104, r26	; 0x800104 <reloj+0x2>
+  c2:	b0 93 05 01 	sts	0x0105, r27	; 0x800105 <reloj+0x3>
+  c6:	08 95       	ret
+
+000000c8 <_Z15actualizar_ledsh>:
+}
+
+void actualizar_leds(uint8_t secuencia) {
+	
+	if (!secuencia){	// SECUENCIA A
+  c8:	81 11       	cpse	r24, r1
+  ca:	14 c0       	rjmp	.+40     	; 0xf4 <_Z15actualizar_ledsh+0x2c>
+		PORTD = (1<<posicion_leds);
+  cc:	81 e0       	ldi	r24, 0x01	; 1
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	00 90 01 01 	lds	r0, 0x0101	; 0x800101 <posicion_leds>
+  d4:	02 c0       	rjmp	.+4      	; 0xda <_Z15actualizar_ledsh+0x12>
+  d6:	88 0f       	add	r24, r24
+  d8:	99 1f       	adc	r25, r25
+  da:	0a 94       	dec	r0
+  dc:	e2 f7       	brpl	.-8      	; 0xd6 <_Z15actualizar_ledsh+0xe>
+  de:	8b b9       	out	0x0b, r24	; 11
+		posicion_leds++;
+  e0:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <posicion_leds>
+  e4:	8f 5f       	subi	r24, 0xFF	; 255
+  e6:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <posicion_leds>
+		
+		if (posicion_leds>7) {
+  ea:	88 30       	cpi	r24, 0x08	; 8
+  ec:	7c f1       	brlt	.+94     	; 0x14c <_Z15actualizar_ledsh+0x84>
+			posicion_leds = 0;
+  ee:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <posicion_leds>
+  f2:	08 95       	ret
+		}
+	} else {			// SECUENCIA B
+		PORTD = (1<<posicion_leds);
+  f4:	81 e0       	ldi	r24, 0x01	; 1
+  f6:	90 e0       	ldi	r25, 0x00	; 0
+  f8:	00 90 01 01 	lds	r0, 0x0101	; 0x800101 <posicion_leds>
+  fc:	02 c0       	rjmp	.+4      	; 0x102 <_Z15actualizar_ledsh+0x3a>
+  fe:	88 0f       	add	r24, r24
+ 100:	99 1f       	adc	r25, r25
+ 102:	0a 94       	dec	r0
+ 104:	e2 f7       	brpl	.-8      	; 0xfe <_Z15actualizar_ledsh+0x36>
+ 106:	8b b9       	out	0x0b, r24	; 11
+		
+		if (!sentido_leds){
+ 108:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 10c:	91 11       	cpse	r25, r1
+ 10e:	0f c0       	rjmp	.+30     	; 0x12e <_Z15actualizar_ledsh+0x66>
+			posicion_leds--;
+ 110:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <posicion_leds>
+ 114:	81 50       	subi	r24, 0x01	; 1
+ 116:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <posicion_leds>
+			if (posicion_leds<0) {
+ 11a:	88 23       	and	r24, r24
+ 11c:	bc f4       	brge	.+46     	; 0x14c <_Z15actualizar_ledsh+0x84>
+				posicion_leds = 1;
+ 11e:	81 e0       	ldi	r24, 0x01	; 1
+ 120:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <posicion_leds>
+				sentido_leds = !sentido_leds;
+ 124:	91 11       	cpse	r25, r1
+ 126:	80 e0       	ldi	r24, 0x00	; 0
+ 128:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 12c:	08 95       	ret
+			}
+		} else {
+			posicion_leds++;
+ 12e:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <posicion_leds>
+ 132:	8f 5f       	subi	r24, 0xFF	; 255
+ 134:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <posicion_leds>
+			if (posicion_leds>7) {
+ 138:	88 30       	cpi	r24, 0x08	; 8
+ 13a:	44 f0       	brlt	.+16     	; 0x14c <_Z15actualizar_ledsh+0x84>
+				posicion_leds = 6;
+ 13c:	86 e0       	ldi	r24, 0x06	; 6
+ 13e:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <posicion_leds>
+				sentido_leds = !sentido_leds;
+ 142:	81 e0       	ldi	r24, 0x01	; 1
+ 144:	91 11       	cpse	r25, r1
+ 146:	80 e0       	ldi	r24, 0x00	; 0
+ 148:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 14c:	08 95       	ret
+
+0000014e <main>:
+void actualizar_leds(uint8_t);
+void actualizar_neopixel();
+
+int main(void)
+{
+    DDRC &= ~ ( (1<<PORTC1) | (1<<PORTC0) ); // PC1 y PC0 son entradas
+ 14e:	87 b1       	in	r24, 0x07	; 7
+ 150:	8c 7f       	andi	r24, 0xFC	; 252
+ 152:	87 b9       	out	0x07, r24	; 7
+	DDRB |= (1<<PORTB0); // PB0 es salida
+ 154:	84 b1       	in	r24, 0x04	; 4
+ 156:	81 60       	ori	r24, 0x01	; 1
+ 158:	84 b9       	out	0x04, r24	; 4
+	DDRD = 0xFF; // Todos los pines de D son salidas
+ 15a:	8f ef       	ldi	r24, 0xFF	; 255
+ 15c:	8a b9       	out	0x0a, r24	; 10
+	PORTC |= ( (1<<PORTC1) | (1<<PORTC0) );
+ 15e:	88 b1       	in	r24, 0x08	; 8
+ 160:	83 60       	ori	r24, 0x03	; 3
+ 162:	88 b9       	out	0x08, r24	; 8
+	
+	uint8_t secuencia_leds = 0;	
+ 164:	c0 e0       	ldi	r28, 0x00	; 0
+	uint8_t secuencia_neopixel = 0;
+	
+    while (1) 
+    {
+		// LEE BOTONES, CAMBIA LA SECUENCIA
+		if ( !(PINC & (1<<PORTC0)) ) {
+ 166:	30 99       	sbic	0x06, 0	; 6
+ 168:	14 c0       	rjmp	.+40     	; 0x192 <main+0x44>
+			if (secuencia_leds){
+ 16a:	cc 23       	and	r28, r28
+ 16c:	39 f0       	breq	.+14     	; 0x17c <main+0x2e>
+				posicion_leds = 0;
+ 16e:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <posicion_leds>
+				secuencia_leds = !secuencia_leds;
+ 172:	81 e0       	ldi	r24, 0x01	; 1
+ 174:	c1 11       	cpse	r28, r1
+ 176:	80 e0       	ldi	r24, 0x00	; 0
+ 178:	c8 2f       	mov	r28, r24
+ 17a:	09 c0       	rjmp	.+18     	; 0x18e <main+0x40>
+			} else {
+				posicion_leds = 7;
+ 17c:	87 e0       	ldi	r24, 0x07	; 7
+ 17e:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <posicion_leds>
+				sentido_leds = 0;
+ 182:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+				secuencia_leds = !secuencia_leds;
+ 186:	81 e0       	ldi	r24, 0x01	; 1
+ 188:	c1 11       	cpse	r28, r1
+ 18a:	80 e0       	ldi	r24, 0x00	; 0
+ 18c:	c8 2f       	mov	r28, r24
+			}
+			while ( !(PINC & (1<<PORTC0)) );
+ 18e:	30 9b       	sbis	0x06, 0	; 6
+ 190:	fe cf       	rjmp	.-4      	; 0x18e <main+0x40>
+		}
+		if ( !(PINC & (1<<PORTC1)) ) {
+ 192:	31 99       	sbic	0x06, 1	; 6
+ 194:	02 c0       	rjmp	.+4      	; 0x19a <main+0x4c>
+			secuencia_neopixel = !secuencia_neopixel;
+			while ( !(PINC & (1<<PORTC1)) );
+ 196:	31 9b       	sbis	0x06, 1	; 6
+ 198:	fe cf       	rjmp	.-4      	; 0x196 <main+0x48>
+		}
+		
+		if (!(reloj%100)){
+ 19a:	60 91 02 01 	lds	r22, 0x0102	; 0x800102 <reloj>
+ 19e:	70 91 03 01 	lds	r23, 0x0103	; 0x800103 <reloj+0x1>
+ 1a2:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <reloj+0x2>
+ 1a6:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <reloj+0x3>
+ 1aa:	24 e6       	ldi	r18, 0x64	; 100
+ 1ac:	30 e0       	ldi	r19, 0x00	; 0
+ 1ae:	40 e0       	ldi	r20, 0x00	; 0
+ 1b0:	50 e0       	ldi	r21, 0x00	; 0
+ 1b2:	0e 94 e5 00 	call	0x1ca	; 0x1ca <__udivmodsi4>
+ 1b6:	67 2b       	or	r22, r23
+ 1b8:	68 2b       	or	r22, r24
+ 1ba:	69 2b       	or	r22, r25
+ 1bc:	19 f4       	brne	.+6      	; 0x1c4 <main+0x76>
+			actualizar_leds(secuencia_leds);
+ 1be:	8c 2f       	mov	r24, r28
+ 1c0:	0e 94 64 00 	call	0xc8	; 0xc8 <_Z15actualizar_ledsh>
+		
+		if (!(reloj%150)){
+			actualizar_neopixel();
+		}
+		
+		delay_1ms();
+ 1c4:	0e 94 48 00 	call	0x90	; 0x90 <_Z9delay_1msv>
+	PORTC |= ( (1<<PORTC1) | (1<<PORTC0) );
+	
+	uint8_t secuencia_leds = 0;	
+	uint8_t secuencia_neopixel = 0;
+	
+    while (1) 
+ 1c8:	ce cf       	rjmp	.-100    	; 0x166 <main+0x18>
+
+000001ca <__udivmodsi4>:
+ 1ca:	a1 e2       	ldi	r26, 0x21	; 33
+ 1cc:	1a 2e       	mov	r1, r26
+ 1ce:	aa 1b       	sub	r26, r26
+ 1d0:	bb 1b       	sub	r27, r27
+ 1d2:	fd 01       	movw	r30, r26
+ 1d4:	0d c0       	rjmp	.+26     	; 0x1f0 <__udivmodsi4_ep>
+
+000001d6 <__udivmodsi4_loop>:
+ 1d6:	aa 1f       	adc	r26, r26
+ 1d8:	bb 1f       	adc	r27, r27
+ 1da:	ee 1f       	adc	r30, r30
+ 1dc:	ff 1f       	adc	r31, r31
+ 1de:	a2 17       	cp	r26, r18
+ 1e0:	b3 07       	cpc	r27, r19
+ 1e2:	e4 07       	cpc	r30, r20
+ 1e4:	f5 07       	cpc	r31, r21
+ 1e6:	20 f0       	brcs	.+8      	; 0x1f0 <__udivmodsi4_ep>
+ 1e8:	a2 1b       	sub	r26, r18
+ 1ea:	b3 0b       	sbc	r27, r19
+ 1ec:	e4 0b       	sbc	r30, r20
+ 1ee:	f5 0b       	sbc	r31, r21
+
+000001f0 <__udivmodsi4_ep>:
+ 1f0:	66 1f       	adc	r22, r22
+ 1f2:	77 1f       	adc	r23, r23
+ 1f4:	88 1f       	adc	r24, r24
+ 1f6:	99 1f       	adc	r25, r25
+ 1f8:	1a 94       	dec	r1
+ 1fa:	69 f7       	brne	.-38     	; 0x1d6 <__udivmodsi4_loop>
+ 1fc:	60 95       	com	r22
+ 1fe:	70 95       	com	r23
+ 200:	80 95       	com	r24
+ 202:	90 95       	com	r25
+ 204:	9b 01       	movw	r18, r22
+ 206:	ac 01       	movw	r20, r24
+ 208:	bd 01       	movw	r22, r26
+ 20a:	cf 01       	movw	r24, r30
+ 20c:	08 95       	ret
+
+0000020e <_exit>:
+ 20e:	f8 94       	cli
+
+00000210 <__stop_program>:
+ 210:	ff cf       	rjmp	.-2      	; 0x210 <__stop_program>
